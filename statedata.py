@@ -52,7 +52,7 @@ class StateData:
     def getSparseDates(self, sparseness):
         sparseDates = self.data_frame['date'].apply(lambda x: x.strftime("%Y-%m-%d"))
         for i in range(sparseness-1):
-            sparseDates[i::sparseness] = ""
+            sparseDates[len(sparseDates)-(i+2)::-sparseness] = ""
         return sparseDates.array
 
     # The last date in the table
